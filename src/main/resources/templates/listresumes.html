@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List Resumes</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+</head>
+<body>
+<h1>All Resumes Listed</h1>
+
+<table>
+
+    <tr>
+        <td><p>Name</p></td>
+        <td><p>Email</p></td>
+        <td><p>Organisation</p></td>
+        <td><p>Start Date</p></td>
+        <td><p>End Date</p></td>
+    </tr>
+
+
+    <th:block th:each="singleresume:${resumes}">
+        <tr>
+            <td><p th:text="${singleresume.name}"/></td>
+            <td><p th:text="${singleresume.email}"/></td>
+            <td><p th:text="${singleresume.organisation}"/></td>
+            <td><p th:text="${singleresume.stdate}"/></td>
+            <td><p th:text="${singleresume.endate}"/></td>
+        </tr>
+    </th:block>
+</table>
+<!--initiates a GET back to /addresume-->
+<a href="/addresume">Add another resume</a>
+</body>
+</html>

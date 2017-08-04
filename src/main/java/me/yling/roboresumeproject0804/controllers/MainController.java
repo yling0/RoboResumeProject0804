@@ -38,6 +38,15 @@ public class MainController {
         return "result";
     }
 
+    @GetMapping("/listresumes")
+    public String listResumes (Model model)
+    {
+        Iterable<Resume> resumeList = resumeRepository.findAll();
+        model.addAttribute("resumes", resumeList);
+        return"listresumes";
+
+    }
+
 
 
 
