@@ -1,6 +1,17 @@
 package me.yling.roboresumeproject0804.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Resume {
+
+    //id is used in the resume table as the key
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     private String name;
     private String email;
@@ -47,5 +58,14 @@ public class Resume {
     public void setEndate(String endate) {
         this.endate = endate;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
 
 }

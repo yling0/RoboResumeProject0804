@@ -1,6 +1,8 @@
 package me.yling.roboresumeproject0804.controllers;
 
 import me.yling.roboresumeproject0804.models.Resume;
+import me.yling.roboresumeproject0804.repositories.ResumeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MainController {
 
-    @GetMapping("/index")
+    @Autowired
+    ResumeRepository resumeRepository;
+
+    @GetMapping("/")
     public String showIndex(Model model)
     {
         String myMessage = "Welcome to Robo Resume!";
@@ -29,7 +34,7 @@ public class MainController {
     @PostMapping("/addresume")
     public String postResume (@ModelAttribute("newResume") Resume resume)
     {
-
+        resumeRepository.save(resume);
         return "result";
     }
 
