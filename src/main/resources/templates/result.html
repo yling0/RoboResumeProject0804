@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Resume</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+</head>
+<body>
+    <h1>Your resume added successfully</h1>
+
+    <p th:text="'Name: ' + ${newResume.name}"/>
+    <p th:text="'Email: ' + ${newResume.email}"/>
+    <p th:text="'Organisation: ' + ${newResume.organisation}"/>
+    <p th:text="'Start date: ' + ${newResume.stdate}"/>
+    <p th:text="'End date: ' + ${newResume.endate}"/>
+
+<!--initiates a GET back to /addresume-->
+    <a href="/addresume">Add another resume</a>
+</body>
+</html>
