@@ -9,9 +9,13 @@
     <h1 th:text="${addresumemessage}">This should not display</h1>
     <form action="#" th:action="@{/addresume}" th:object="${newResume}" method="post">
 
+    <span th:if="${#fields.hasErrors('name')}" th:error="*{name}">Name Error</span>
     <p>Enter your name: <input type="text" th:field="*{name}"/></p>
+
     <p>Enter your email: <input type="text" th:field="*{email}"/></p>
     <p>Enter your organisation: <input type="text" th:field="*{organisation}"/></p>
+
+    <span th:if="${#fields.hasErrors('stdate')}" th:error="*{stdate}">Start Date Error</span>
     <p>Enter your start date: <input type="text" th:field="*{stdate}"/></p>
     <p>Enter your end date: <input type="text" th:field="*{endate}"/></p>
 
