@@ -12,8 +12,8 @@
     <p th:text="'Organisation: ' + ${newResume.organisation}"/>
     <p th:text="'Start date: ' + ${newResume.stdate}"/>
     <p th:text="'End date: ' + ${newResume.endate}"/>
+    <p th:text="'You have been working for ' + ${newResume.diffDays} + ' days.'"/>
 
-<!--initiates a GET back to /addresume-->
     <a href="/addresume">Add another resume</a>
 </body>
 </html>

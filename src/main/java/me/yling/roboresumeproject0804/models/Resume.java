@@ -17,15 +17,20 @@ public class Resume {
     private long id;
 
     @NotNull
-    //@Size(min = 2, max = 30)
+    @Size(min = 2, max = 30)
     private String name;
 
     private String email;
     private String Organisation;
 
     @NotNull
+    @Size(min = 10, max = 10)
     private String stdate;
+
     private String endate;
+
+    private long diffDays;
+
 
     public String getName() {
         return name;
@@ -51,12 +56,20 @@ public class Resume {
         Organisation = organisation;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getStdate() {
         return stdate;
     }
 
-    public void setStdate(String date) {
-        this.stdate = date;
+    public void setStdate(String stdate) {
+        this.stdate = stdate;
     }
 
     public String getEndate() {
@@ -67,13 +80,12 @@ public class Resume {
         this.endate = endate;
     }
 
-    public long getId() {
-        return id;
+    public long getDiffDays() {
+        return diffDays;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setDiffDays(long diffDays) {
+        this.diffDays = diffDays;
     }
-
 
 }

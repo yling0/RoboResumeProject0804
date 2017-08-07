@@ -11,6 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Controller
 public class MainController {
@@ -35,11 +43,24 @@ public class MainController {
     }
 
     @PostMapping("/addresume")
-    public String postResume (@Valid @ModelAttribute("newResume") Resume resume, BindingResult bindingResult)
-    {
+    public String postResume (@Valid @ModelAttribute("newResume") Resume resume, BindingResult bindingResult) {
         if(bindingResult.hasErrors())
         {
             return "addresume";
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+        LocalDate d1 = LocalDate.parse(resume.getStdate(), formatter);
+
+
+        if (resume.getEndate().isEmpty())
+        {
+            resume.setDiffDays(ChronoUnit.DAYS.between(d1, LocalDate.now()));
+            resume.setEndate(String.valueOf(LocalDate.now()));
+        } else {
+            LocalDate d2 = LocalDate.parse(resume.getEndate(), formatter);
+            resume.setDiffDays(ChronoUnit.DAYS.between(d1, d2));
         }
 
         //save it to the database
@@ -54,12 +75,6 @@ public class MainController {
         model.addAttribute("resumes", resumeList);
         return"listresumes";
     }
-
-
-
-
-
-
 
 }
 
