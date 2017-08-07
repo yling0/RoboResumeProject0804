@@ -16,8 +16,10 @@
     <p>Enter your organisation: <input type="text" th:field="*{organisation}"/></p>
 
     <span th:if="${#fields.hasErrors('stdate')}" th:error="*{stdate}">Start Date Error</span>
-    <p>Enter your start date (mm/dd/yyyy): <input type="text" th:field="*{stdate}"/></p>
-    <p>Enter your end date (mm/dd/yyyy): <input type="text" th:field="*{endate}"/></p>
+    <p>Enter your start date (yyyy-mm-dd): <input type="text" th:field="*{stdate}"/></p>
+
+    <!--<span th:if="${#fields.hasErrors('endate')}" th:error="*{endate}">End Date Error</span>-->
+    <p>Enter your end date (yyyy-mm-dd): <input type="text" th:field="*{endate}"/></p>
 
 
     <input type="submit" value="Add Resume"/>

@@ -23,6 +23,7 @@ public class Resume {
     private String email;
     private String Organisation;
 
+    //validate dates
     @NotNull
     @Size(min = 10, max = 10)
     private String stdate;
